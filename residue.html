@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Residue Tests - Digital Farm Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", sans-serif;}
+    body { background:#f5f7fa; color:#333; }
+
+    /* Navbar */
+    nav {
+      background: linear-gradient(90deg, #2e7d32, #1565c0);
+      padding: 15px 25px; display:flex; justify-content:space-between; align-items:center; color:white;
+    }
+    nav h2 { font-size:22px; }
+    nav ul { list-style:none; display:flex; gap:20px; }
+    nav ul li a { color:white; text-decoration:none; font-weight:bold; transition:0.3s; }
+    nav ul li a:hover { color:#ffeb3b; }
+
+    /* Form Container */
+    .form-container { background:white; margin:30px auto; padding:25px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:700px; }
+    .form-container h2 { text-align:center; margin-bottom:20px; color:#1565c0; }
+    form { display:grid; gap:15px; }
+    label { font-weight:bold; }
+    input, select { padding:10px; border-radius:8px; border:1px solid #ccc; width:100%; }
+    button { padding:12px; background:linear-gradient(135deg,#42a5f5,#1565c0); color:white; font-weight:bold; border:none; border-radius:8px; cursor:pointer; transition:0.3s; }
+    button:hover { background:linear-gradient(135deg,#2e7d32,#66bb6a); }
+
+    /* Table */
+    .table-container { background:white; margin:30px auto; padding:20px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:900px; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { border:1px solid #ccc; padding:10px; text-align:center; }
+    th { background: #1565c0; color:white; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>🐄 Digital Farm Portal</h2>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <!-- Add Residue Test Form -->
+  <div class="form-container">
+    <h2>🧪 Add Residue Test</h2>
+    <form id="residueForm">
+      <label>Sample ID</label>
+      <input type="text" id="sampleId" placeholder="e.g., Milk #101" required>
+
+      <label>Animal ID / Group</label>
+      <input type="text" id="animal" placeholder="e.g., Animal #12 or Group B">
+
+      <label>Drug Tested</label>
+      <input type="text" id="drug" placeholder="e.g., Tetracycline" required>
+
+      <label>Result</label>
+      <select id="result">
+        <option>Pass</option>
+        <option>Fail</option>
+      </select>
+
+      <label>Test Date</label>
+      <input type="date" id="testDate" required>
+
+      <label>Remarks</label>
+      <input type="text" id="remarks" placeholder="Optional">
+
+      <button type="submit">Save Test</button>
+    </form>
+  </div>
+
+  <!-- Residue Tests Table -->
+  <div class="table-container">
+    <h2>📋 Logged Residue Tests</h2>
+    <table id="residueTable">
+      <tr>
+        <th>Sample ID</th>
+        <th>Animal</th>
+        <th>Drug</th>
+        <th>Result</th>
+        <th>Date</th>
+        <th>Remarks</th>
+      </tr>
+      <tr>
+        <td>Milk #101</td>
+        <td>Animal #12</td>
+        <td>Tetracycline</td>
+        <td>Fail</td>
+        <td>2025-09-12</td>
+        <td>Exceeded MRL</td>
+      </tr>
+      <tr>
+        <td>Milk #102</td>
+        <td>Animal #14</td>
+        <td>Penicillin</td>
+        <td>Pass</td>
+        <td>2025-09-10</td>
+        <td>Within limits</td>
+      </tr>
+      <tr>
+        <td>Egg #201</td>
+        <td>Group B</td>
+        <td>Sulfonamide</td>
+        <td>Fail</td>
+        <td>2025-09-08</td>
+        <td>Above limit</td>
+      </tr>
+      <tr>
+        <td>Meat #301</td>
+        <td>Animal #20</td>
+        <td>Chloramphenicol</td>
+        <td>Pass</td>
+        <td>2025-09-05</td>
+        <td>Clear</td>
+      </tr>
+      <tr>
+        <td>Milk #103</td>
+        <td>Animal #16</td>
+        <td>Streptomycin</td>
+        <td>Fail</td>
+        <td>2025-09-03</td>
+        <td>Retest required</td>
+      </tr>
+      <tr>
+        <td>Egg #202</td>
+        <td>Group C</td>
+        <td>Enrofloxacin</td>
+        <td>Pass</td>
+        <td>2025-09-01</td>
+        <td>Safe</td>
+      </tr>
+      <tr>
+        <td>Milk #104</td>
+        <td>Animal #18</td>
+        <td>Gentamicin</td>
+        <td>Fail</td>
+        <td>2025-08-29</td>
+        <td>Residue detected</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById('residueForm');
+    const table = document.getElementById('residueTable');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const sampleId = document.getElementById('sampleId').value;
+      const animal = document.getElementById('animal').value;
+      const drug = document.getElementById('drug').value;
+      const result = document.getElementById('result').value;
+      const testDate = document.getElementById('testDate').value;
+      const remarks = document.getElementById('remarks').value;
+
+      const row = table.insertRow(-1);
+      row.insertCell(0).innerText = sampleId;
+      row.insertCell(1).innerText = animal;
+      row.insertCell(2).innerText = drug;
+      row.insertCell(3).innerText = result;
+      row.insertCell(4).innerText = testDate;
+      row.insertCell(5).innerText = remarks;
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

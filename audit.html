@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audit Trail - Digital Farm Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", sans-serif;}
+    body { background:#f5f7fa; color:#333; }
+
+    /* Navbar */
+    nav {
+      background: linear-gradient(90deg, #2e7d32, #1565c0);
+      padding: 15px 25px; display:flex; justify-content:space-between; align-items:center; color:white;
+    }
+    nav h2 { font-size:22px; }
+    nav ul { list-style:none; display:flex; gap:20px; }
+    nav ul li a { color:white; text-decoration:none; font-weight:bold; transition:0.3s; }
+    nav ul li a:hover { color:#ffeb3b; }
+
+    /* Container */
+    .audit-container {
+      background:white;
+      margin:30px auto;
+      padding:25px;
+      border-radius:15px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      max-width:1000px;
+    }
+    .audit-container h2 { text-align:center; margin-bottom:20px; color:#6a1b9a; }
+
+    table { width:100%; border-collapse:collapse; margin-top:15px; }
+    th, td { border:1px solid #ccc; padding:10px; text-align:center; }
+    th { background:#1565c0; color:white; }
+    tr:nth-child(even) { background:#f1f8e9; }
+    tr:nth-child(odd) { background:#e3f2fd; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>🐄 Digital Farm Portal</h2>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <!-- Audit Trail -->
+  <div class="audit-container">
+    <h2>📜 Traceability & Audit Trail</h2>
+    <p style="text-align:center; margin-bottom:15px; color:#555;">Every action is recorded here for transparency and compliance.</p>
+
+    <table>
+      <tr>
+        <th>Timestamp</th>
+        <th>User</th>
+        <th>Action</th>
+        <th>Details</th>
+      </tr>
+      <tr>
+        <td>2025-09-15 10:32</td>
+        <td>Dr. Sharma (Vet)</td>
+        <td>Added Treatment</td>
+        <td>Cow #12 | Amoxicillin 5ml | Injection</td>
+      </tr>
+      <tr>
+        <td>2025-09-16 14:20</td>
+        <td>Farmer Ravi</td>
+        <td>Updated Withdrawal Status</td>
+        <td>Cow #7 marked safe for sale</td>
+      </tr>
+      <tr>
+        <td>2025-09-17 09:45</td>
+        <td>Lab Tech Anita</td>
+        <td>Residue Test Logged</td>
+        <td>Sample ID #123 | Milk | Result: Safe</td>
+      </tr>
+      <tr>
+        <td>2025-09-17 12:05</td>
+        <td>Admin</td>
+        <td>Edited Record</td>
+        <td>Cow #3 treatment corrected | Drug: Penicillin</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>

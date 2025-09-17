@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Withdrawal Alerts - Digital Farm Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", sans-serif;}
+    body { background:#f5f7fa; color:#333; }
+
+    /* Navbar */
+    nav {
+      background: linear-gradient(90deg, #2e7d32, #1565c0);
+      padding: 15px 25px;
+      display:flex; justify-content:space-between; align-items:center;
+      color:white;
+    }
+    nav h2 { font-size:22px; }
+    nav ul { list-style:none; display:flex; gap:20px; }
+    nav ul li a { color:white; text-decoration:none; font-weight:bold; transition:0.3s; }
+    nav ul li a:hover { color:#ffeb3b; }
+
+    /* Container */
+    .alert-container {
+      background:white;
+      margin:30px auto;
+      padding:25px;
+      border-radius:15px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      max-width:900px;
+    }
+    .alert-container h2 {
+      text-align:center;
+      margin-bottom:20px;
+      color:#d32f2f;
+    }
+
+    /* Alerts List */
+    .alert {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:#fff4f4;
+      border-left:6px solid #d32f2f;
+      padding:15px;
+      border-radius:8px;
+      margin-bottom:15px;
+    }
+    .alert.safe {
+      background:#f1fdf5;
+      border-left-color:#2e7d32;
+    }
+    .alert i {
+      font-size:22px;
+      margin-right:10px;
+    }
+    .alert strong {
+      font-size:16px;
+    }
+    .alert span {
+      font-size:14px;
+      color:#666;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>🐄 Digital Farm Portal</h2>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <!-- Alerts Section -->
+  <div class="alert-container">
+    <h2>⚠ Withdrawal Alerts</h2>
+    <p style="text-align:center; margin-bottom:20px; color:#555;">
+      Monitor animals currently under drug withdrawal periods to ensure food safety.
+    </p>
+
+    <!-- Example Alerts -->
+    <div class="alert">
+      <div>
+        <i class="fa-solid fa-triangle-exclamation" style="color:#d32f2f;"></i>
+        <strong>Cow #102</strong> – Still under withdrawal (3 days left)
+      </div>
+      <span>Drug: Oxytetracycline</span>
+    </div>
+
+    <div class="alert">
+      <div>
+        <i class="fa-solid fa-triangle-exclamation" style="color:#d32f2f;"></i>
+        <strong>Chicken Batch #21</strong> – Withdrawal ongoing (5 days left)
+      </div>
+      <span>Drug: Amoxicillin</span>
+    </div>
+
+    <div class="alert safe">
+      <div>
+        <i class="fa-solid fa-circle-check" style="color:#2e7d32;"></i>
+        <strong>Goat #56</strong> – Safe for sale/processing ✅
+      </div>
+      <span>Drug: Penicillin (Completed)</span>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Treatment - Digital Farm Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", sans-serif;}
+    body { background:#f5f7fa; color:#333; }
+
+    /* Navbar */
+    nav {
+      background: linear-gradient(90deg, #2e7d32, #1565c0);
+      padding: 15px 25px; display:flex; justify-content:space-between; align-items:center; color:white;
+    }
+    nav h2 { font-size:22px; }
+    nav ul { list-style:none; display:flex; gap:20px; }
+    nav ul li a { color:white; text-decoration:none; font-weight:bold; transition:0.3s; }
+    nav ul li a:hover { color:#ffeb3b; }
+
+    /* Form Container */
+    .form-container { background:white; margin:30px auto; padding:25px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:700px; }
+    .form-container h2 { text-align:center; margin-bottom:20px; color:#1565c0; }
+    form { display:grid; gap:15px; }
+    label { font-weight:bold; }
+    input, select, textarea { padding:10px; border-radius:8px; border:1px solid #ccc; width:100%; }
+    button { padding:12px; background:linear-gradient(135deg,#42a5f5,#1565c0); color:white; font-weight:bold; border:none; border-radius:8px; cursor:pointer; transition:0.3s; }
+    button:hover { background:linear-gradient(135deg,#2e7d32,#66bb6a); }
+
+    /* Table */
+    .table-container { background:white; margin:30px auto; padding:20px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:900px; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { border:1px solid #ccc; padding:10px; text-align:center; }
+    th { background: #1565c0; color:white; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>🐄 Digital Farm Portal</h2>
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <!-- Add Treatment Form -->
+  <div class="form-container">
+    <h2>➕ Add New Treatment</h2>
+    <form id="treatmentForm">
+      <label>Animal ID / Group</label>
+      <input type="text" id="animal" placeholder="e.g., Animal #12 or Group A" required>
+
+      <label>Species</label>
+      <input type="text" id="species" placeholder="e.g., Cattle, Poultry" required>
+
+      <label>Drug Name</label>
+      <input type="text" id="drug" placeholder="e.g., Amoxicillin" required>
+
+      <label>Dose</label>
+      <input type="text" id="dose" placeholder="e.g., 5 ml / day" required>
+
+      <label>Route</label>
+      <select id="route">
+        <option>Injection</option>
+        <option>Feed</option>
+      </select>
+
+      <label>Start Date</label>
+      <input type="date" id="startDate" required>
+
+      <label>End Date</label>
+      <input type="date" id="endDate" required>
+
+      <label>Reason for Treatment</label>
+      <textarea id="reason" rows="2" required></textarea>
+
+      <label>Veterinarian / Prescription ID</label>
+      <input type="text" id="vet" placeholder="Optional">
+
+      <button type="submit">Save Treatment</button>
+    </form>
+  </div>
+
+  <!-- Treatments Table -->
+  <div class="table-container">
+    <h2>📝 Logged Treatments</h2>
+    <table id="treatmentTable">
+      <tr>
+        <th>Animal</th>
+        <th>Species</th>
+        <th>Drug</th>
+        <th>Dose</th>
+        <th>Route</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Reason</th>
+        <th>Vet / Prescription</th>
+      </tr>
+      <tr>
+        <td>Animal #12</td>
+        <td>Cattle</td>
+        <td>Amoxicillin</td>
+        <td>5 ml</td>
+        <td>Injection</td>
+        <td>01-Sep</td>
+        <td>05-Sep</td>
+        <td>Fever</td>
+        <td>Dr. Sharma / 123</td>
+      </tr>
+      <tr>
+        <td>Animal #18</td>
+        <td>Cattle</td>
+        <td>Oxytetracycline</td>
+        <td>10 ml</td>
+        <td>Injection</td>
+        <td>03-Sep</td>
+        <td>07-Sep</td>
+        <td>Infection</td>
+        <td>Dr. Patel / 234</td>
+      </tr>
+      <tr>
+        <td>Group A</td>
+        <td>Poultry</td>
+        <td>Amprolium</td>
+        <td>Mix in feed</td>
+        <td>Feed</td>
+        <td>05-Sep</td>
+        <td>12-Sep</td>
+        <td>Coccidiosis</td>
+        <td>Dr. Khan / 345</td>
+      </tr>
+      <tr>
+        <td>Animal #22</td>
+        <td>Goat</td>
+        <td>Penicillin</td>
+        <td>4 ml</td>
+        <td>Injection</td>
+        <td>06-Sep</td>
+        <td>10-Sep</td>
+        <td>Wound Infection</td>
+        <td>Dr. Verma / 456</td>
+      </tr>
+      <tr>
+        <td>Animal #30</td>
+        <td>Sheep</td>
+        <td>Ivermectin</td>
+        <td>2 ml</td>
+        <td>Injection</td>
+        <td>07-Sep</td>
+        <td>08-Sep</td>
+        <td>Parasite Control</td>
+        <td>Dr. Rao / 567</td>
+      </tr>
+      <tr>
+        <td>Animal #45</td>
+        <td>Cattle</td>
+        <td>Meloxicam</td>
+        <td>8 ml</td>
+        <td>Injection</td>
+        <td>08-Sep</td>
+        <td>09-Sep</td>
+        <td>Pain Relief</td>
+        <td>Dr. Singh / 678</td>
+      </tr>
+      <tr>
+        <td>Group B</td>
+        <td>Poultry</td>
+        <td>Tylosin</td>
+        <td>Mix in water</td>
+        <td>Feed</td>
+        <td>09-Sep</td>
+        <td>13-Sep</td>
+        <td>Respiratory Disease</td>
+        <td>Dr. Iyer / 789</td>
+      </tr>
+      <tr>
+        <td>Animal #50</td>
+        <td>Cattle</td>
+        <td>Ceftriaxone</td>
+        <td>15 ml</td>
+        <td>Injection</td>
+        <td>10-Sep</td>
+        <td>14-Sep</td>
+        <td>Pneumonia</td>
+        <td>Dr. Gupta / 890</td>
+      </tr>
+      <tr>
+        <td>Animal #60</td>
+        <td>Goat</td>
+        <td>Enrofloxacin</td>
+        <td>5 ml</td>
+        <td>Injection</td>
+        <td>11-Sep</td>
+        <td>15-Sep</td>
+        <td>Diarrhea</td>
+        <td>Dr. Mehta / 901</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById('treatmentForm');
+    const table = document.getElementById('treatmentTable');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const animal = document.getElementById('animal').value;
+      const species = document.getElementById('species').value;
+      const drug = document.getElementById('drug').value;
+      const dose = document.getElementById('dose').value;
+      const route = document.getElementById('route').value;
+      const startDate = document.getElementById('startDate').value;
+      const endDate = document.getElementById('endDate').value;
+      const reason = document.getElementById('reason').value;
+      const vet = document.getElementById('vet').value;
+
+      const row = table.insertRow(-1);
+      row.insertCell(0).innerText = animal;
+      row.insertCell(1).innerText = species;
+      row.insertCell(2).innerText = drug;
+      row.insertCell(3).innerText = dose;
+      row.insertCell(4).innerText = route;
+      row.insertCell(5).innerText = startDate;
+      row.insertCell(6).innerText = endDate;
+      row.insertCell(7).innerText = reason;
+      row.insertCell(8).innerText = vet;
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
